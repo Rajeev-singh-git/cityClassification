@@ -1,0 +1,43 @@
+nav {
+    background-color:black;
+    border : 0;
+}
+
+.navbar-header{
+            text-align: center;
+}
+.navbar-header{
+    color:white;
+}
+.col{
+    margin-left: 950px;
+    text-align: right;
+    border : 0;
+    background-color:rgb(160,0,0);
+}
+
+.textarea{
+    overflow: scroll;
+    height: 400px;
+    width:1090px;
+    background-color:white;
+    margin-left: 100px;
+    margin-top: 50px;
+
+     object-fit: none;
+     object-position: 1000px 200px;
+}
+
+.col2{
+    width:230px;
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 950px;
+}
+
+.col3{
+    width:230px;
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 950px;
+}

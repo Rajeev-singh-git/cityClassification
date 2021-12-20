@@ -1,0 +1,30 @@
+<html>
+ <body>
+   <nav>
+       <div class = "navbar-header">
+           <a href="#" class="navbar-brand">Image Change on clicking Enter in TextBox</a>
+           <input class = "col" type = "text" readonly value ="{{imgNumber}}/3  {{cityImageId}}">
+       </div>
+    </nav>
+
+<div class = "textarea" contenteditable #scrollDiv [scrollTop]="scrollDiv.scrollHeight" wrap="hard">
+    <img contenteditable="false" [src]="imagePath" width = "1090px" height = "440"/>
+</div>
+
+
+<form>
+    <div>
+        <input type = "text" class="col2" [(ngModel)]="city.pinCode" (keyup.enter)="nextImage()" maxlength="6"/>
+    </div>
+</form>
+
+
+<div>
+    <input type = "label" class = "col3" value = "Pin Code" readonly />
+</div>
+
+
+
+ </body>
+</html>
+
