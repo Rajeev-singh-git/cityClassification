@@ -10,10 +10,18 @@ import { CityClassificationService } from 'src/app/service/city-classification.s
 })
 export class CityClassificationComponent implements OnInit {
   imgNumber : number =1;
-  cityImageId : number = 101;
-  imagePath : string ='assets/images/Ghazipur1.png';
+  cityImageId : number = -1;
+  imagePath : string ='';
+  curImageNumber:number=0;
+
+  imageDetails :{imageName:string,cityImageId: number,imgNumber:number}[]={
+    {imageName:'Ghazipur1', cityImageId:101,imgNumber:1},
+    {imageName:'Nashik2', cityImageId:101,imgNumber:2},
+    {imageName:'Noida3', cityImageId:101,imgNumber:3}
+  }
   
- cityDetailArray : CityClassification[] = [];
+ //cityDetailArray : CityClassification[] = [];
+ 
   
  city: CityClassification = {
    pinCode : '1',
