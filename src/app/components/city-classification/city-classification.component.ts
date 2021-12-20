@@ -30,7 +30,7 @@ export class CityClassificationComponent implements OnInit {
   }
 
   generatecityDetailArray():void{
-    if(this.pincode==''){alert('Enter Valid PinCode');return;};
+    if(this.pincode=='' || this.pincode.toString().length>6){alert('Enter Valid PinCode');return;};
     this.cityDetailArray.push(
       {pincode:this.pincode, cityImageId:this.cityImageId, imgNumber:this.imgNumber}
     );
