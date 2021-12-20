@@ -14,14 +14,14 @@
 
 <form>
     <div>
-        <input type = "text" class="col2" [(ngModel)]="city.pinCode" (keyup.enter)="nextImage()" maxlength="6"/>
+        <input type = "text" class="col2" [(ngModel)]="pincode" (keyup.enter)="generatecityDetailArray()" maxlength="6" [ngModelOptions]="{standalone: true}"/>
     </div>
 </form>
 
 
-<div>
+<!-- <div>
     <input type = "label" class = "col3" value = "Pin Code" readonly />
-</div>
+</div> -->
 
 
 

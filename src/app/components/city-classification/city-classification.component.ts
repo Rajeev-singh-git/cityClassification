@@ -1,6 +1,4 @@
-import { CompileEntryComponentMetadata } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { CityClassification } from 'src/app/domain/cityClassification.model';
 import { CityClassificationService } from 'src/app/service/city-classification.service';
 
 @Component({
@@ -9,22 +7,42 @@ import { CityClassificationService } from 'src/app/service/city-classification.s
   styleUrls: ['./city-classification.component.css']
 })
 export class CityClassificationComponent implements OnInit {
-  imgNumber : number =1;
-  cityImageId : number = 101;
-  imagePath : string ='assets/images/Ghazipur1.png';
+  imgNumber : number =-1;
+  cityImageId : number = -1;
+  imagePath : string ='';
+  pincode:string='';
+  curImageNumber:number=0;
+  imageDetails:{imageName:string,cityImageId:number,imgNumber:number}[]=[];
   
- cityDetailArray : CityClassification[] = [];
+ cityDetailArray :{ pincode : string; cityImageId : number; imgNumber:number;}[] = [];
   
- city: CityClassification = {
-   pinCode : '1',
-   cityImageId : 101
- }
+ 
 
- nextImage(){}
-
- constructor(private cityClassificationService: CityClassificationService) { }
+ constructor(private cityService:CityClassificationService) { }
  
  ngOnInit(): void {
+   this.imageDetails=this.cityService.getImageObject();
+    this.getNextImage(this.imageDetails[this.curImageNumber]);
+  }
+
+  getNextImage(imageObj:{imageName:string,cityImageId:number,imgNumber:number}):void{
+    this.imgNumber= imageObj.imgNumber;this.imagePath=`assets/images/${imageObj.imageName}.png`;this.cityImageId=imageObj.cityImageId;
+  }
+
+  generatecityDetailArray():void{
+    if(this.pincode==''){alert('Enter Valid PinCode');return;};
+    this.cityDetailArray.push(
+      {pincode:this.pincode, cityImageId:this.cityImageId, imgNumber:this.imgNumber}
+    );
+    this.pincode='';
+    this.curImageNumber++;
+    if(this.curImageNumber==this.imageDetails.length){this.submitForm();return;}
+    this.getNextImage(this.imageDetails[this.curImageNumber]);
+  }
+
+  submitForm(){
+    //TODO here....
+    this.cityService.getAPi(this.cityDetailArray);
   }
 
 }
